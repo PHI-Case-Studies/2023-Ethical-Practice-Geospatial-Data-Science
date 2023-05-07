@@ -1,1 +1,1 @@
-# 2022-Ethical-Practice-Geospatial-Data-Science
+# 2023-Ethical-Practice-Geospatial-Data-Science
