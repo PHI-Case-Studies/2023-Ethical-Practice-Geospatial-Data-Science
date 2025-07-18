@@ -1,56 +1,41 @@
-name: geoprivacy_py3
+name: gis
 channels:
   - conda-forge
-  - anaconda
-  - plotly
 dependencies:
-  - wget
-  - folium
-  - jinja2
-  - osmnx
-  - fiona
-  - matplotlib
-  - pandas=1.*
+  - python=3.11
+  - jupyterlab
+  - notebook
+  - ipykernel
   - geopandas
-  - descartes
+  - gdal
+  - fiona
+  - folium
   - shapely
+  - pyproj
+  - rtree
+  - matplotlib
+  - pandas
   - numpy
-  - alphashape
-  - tqdm
   - scikit-learn
   - scipy
-  - gdal
-  - libgdal
-  - pyproj
-  - ipywidgets
-  - ipykernel
-  - leafmap
-  - ipython
-  - python-dateutil
-  - twisted
-  - jupyter_contrib_core
-  - uritemplate
-  - pandas-datareader
-  - tabulate
-  - nbresuse
-  - keplergl
-  - missingno
-  - sklearn-pandas
-  - pyzmq
-  - chart-studio
-  - nbgitpuller
-  - pandas-profiling
-  - yarl
-  - openpyxl
-  - numba
+  - requests
+  - seaborn
   - geopy
-  - proj
-  - pyproj
-  - geos
-  - pygeos
-  - rasterio
-  - h3
-  - h3-py
-  - xarray
-  - rtree
-  - pip
+  - pyogrio
+  - tqdm
+  - ipython
+  - jinja2
+  - branca
+  - click
+  - click-plugins
+  - cligj
+  - nbconvert
+  - nbformat
+  - jupyter_client
+  - jupyter_core
+  - pyzmq
+  - tornado
+  - pip:
+      - geographiclib
+      - numba
+      - h3=4.1.0

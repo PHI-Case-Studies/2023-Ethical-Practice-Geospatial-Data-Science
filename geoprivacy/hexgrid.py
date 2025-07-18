@@ -3,7 +3,8 @@ import sys
 module_path = os.path.abspath(os.path.join('..'))
 if module_path not in sys.path:
     sys.path.append(module_path)   
-from h3 import h3
+#from h3 import h3
+import h3.api.basic_int as h3 
 import folium
 import json
 
