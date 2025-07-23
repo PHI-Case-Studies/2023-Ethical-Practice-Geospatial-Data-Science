@@ -26,7 +26,7 @@ jobs:
       - name: Check if "latest" tag exists
         id: check_latest
         run: |
-          TAG_EXISTS=$(curl -s "https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one/tags" \
+          TAG_EXISTS=$(curl -s "https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science/tags" \
           | jq -r '.results[].name' | grep -w "latest" || true)
 
           if [[ -z "$TAG_EXISTS" ]]; then
@@ -42,14 +42,14 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:latest
 
       # If "latest" tag exists, follow the normal versioning steps
       - name: Get Latest Version
         if: env.LATEST_TAG_EXISTS == 'true'
         id: get_version
         run: |
-          LATEST_VERSION=$(curl -s "https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one/tags" \
+          LATEST_VERSION=$(curl -s "https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science/tags" \
           | jq -r '.results[].name' | grep 'version-' | sort -V | tail -n 1 | sed 's/version-//')
 
           if [[ -z "$LATEST_VERSION" ]]; then
@@ -65,15 +65,15 @@ jobs:
         if: env.LATEST_TAG_EXISTS == 'true'
         continue-on-error: true
         run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:latest || echo "No previous latest image found"
+          docker pull ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:latest || echo "No previous latest image found"
 
       # Tag the previous latest image with a version number
       - name: Tag Previous Latest Image
         if: env.LATEST_TAG_EXISTS == 'true'
         run: |
-          if docker image inspect ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:latest > /dev/null 2>&1; then
-             docker tag ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:latest \
-          ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:version-${{ env.NEW_VERSION }}
+          if docker image inspect ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:latest > /dev/null 2>&1; then
+             docker tag ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:latest \
+          ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:version-${{ env.NEW_VERSION }}
           else
              echo "No previous latest image found, skipping tag"
           fi
@@ -82,7 +82,7 @@ jobs:
       - name: Push Versioned Image
         if: env.LATEST_TAG_EXISTS == 'true'
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:version-${{ env.NEW_VERSION }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:version-${{ env.NEW_VERSION }}
 
       # Build and push the new latest image
       - name: Build and Push Latest
@@ -91,4 +91,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/cholera-outbreak-london-advanced-one:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/ethical-practice-geospatial-data-science:latest
