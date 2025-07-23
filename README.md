@@ -6,8 +6,7 @@ This case study aims to help digital health and public health students and train
 
 ### Interact with the Case Study
 
-[![Binder](https://beta.mybinder.org/badge.svg)](https://beta.mybinder.org/v2/gh/PHI-Case-Studies/2023-Ethical-Practice-Geospatial-Data-Science
-/master)
+[![Binder](https://beta.mybinder.org/badge.svg)](https://beta.mybinder.org/v2/gh/PHI-Case-Studies/2023-Ethical-Practice-Geospatial-Data-Science/master)
 
 This is a **digital case study** built with [Jupyter Notebook](https://jupyter.org/) and Docker about the 1854 Cholera Outbreak in London. Dr. John Snow carried out the investigation of this outbreak. Click on the BinderHub link above to interact with this digital case study. Wait a few minutes for the BinderHub service to complete its setup and launch. Enjoy the rest of the story after you launch the case study.
 
